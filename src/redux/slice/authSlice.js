@@ -1,16 +1,42 @@
 //// giriş yapan kullanıcı bilgisini yöneten redux
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-
+  isLoggedIn: false,
+  email: null,
+  userName: null,
+  userId: null
 }
 
 const authSlice = createSlice({
-  name: second,
+  name: "auth",
   initialState,
-  reducers: {}
+  reducers: {
+    // aktif kullanıcıyı kaydetmek
+    SET_ACTIVE_USER: (state, action) => {
+      // console.log(action.payload)
+      const { email, userName, userID } = action.payload
+      state.isLoggedIn = true;
+      state.email = email;
+      state.userName = userName;
+      state.userId = userID;
+    },
+    REMOVE_ACTİVE_USER: (state) => {
+      state.isLoggedIn = false;
+      state.email = null;
+      state.userName = null;
+      state.userId = null;
+    }
+  }
 });
 
-export const {} = authSlice.actions
+export const { SET_ACTIVE_USER } = authSlice.actions
+export const { REMOVE_ACTİVE_USER } = authSlice.actions;
+
+
+export const selectIsLoggedIn = (state) => state.auth.isoggedIn
+export const selectEmail = (state) => state.auth.email
+export const selectUserName = (state) => state.auth.userName
+export const selectUserId = (state) => state.auth.userId
 
 export default authSlice.reducer

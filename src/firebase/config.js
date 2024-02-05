@@ -1,29 +1,30 @@
-//// burada google firebase ile etkileşime buradan girilecek.
-import { initializeApp } from "firebase/app";
+// burada google firebase ile etkileşimlere girilir.
 
-// Giriş kontrol ve yetkilendirme
-import {getAuth} from "firebase/auth"
+import { initializeApp } from "firebase/app"
 
-// Verilerin kayıt yerine erişmek için 
-import {getFireStore} from "firebase/firestore"
+// giriş kontrol yetkilendirme
+import { getAuth } from "firebase/auth"
 
-// resimlerin kayıt yeri
-import {geyStorage} from "firebase/storage"
+// verileri kaydetme
+import { getFirestore } from "firebase/firestore"
 
+// resimleri kaydetme
+import { getStorage } from "firebase/storage"
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBUMP6IFoDMOm1aBsn3s1pFfWINO7ZZAgY",
-  authDomain: "eshop-ae60a.firebaseapp.com",
-  projectId: "eshop-ae60a",
-  storageBucket: "eshop-ae60a.appspot.com",
-  messagingSenderId: "1014134149600",
-  appId: "1:1014134149600:web:624b30e5b2bb9a80a75b85"
+  apiKey: "AIzaSyBDMF08PnAV-S7hFe_PtXxf0240Zf1vqxU",
+  authDomain: "react-eshop-4040f.firebaseapp.com",
+  projectId: "react-eshop-4040f",
+  storageBucket: "react-eshop-4040f.appspot.com",
+  messagingSenderId: "682506709972",
+  appId: "1:682506709972:web:95e1eee953b15a1c8e8441",
+  measurementId: "G-4VTW56QVC0"
 };
 
 const app = initializeApp(firebaseConfig);
 
-export const auth = initializeApp(firebaseConfig)
-export const db = getFireStore(app)
-export const storage = getStorage(app)
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
 
-export default app
+export default app;
