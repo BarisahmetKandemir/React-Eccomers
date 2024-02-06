@@ -103,9 +103,11 @@ const Header = () => {
               <FaTimes size={22} color="#fff" onClick={hideMenu} />
             </li>
             <AdminOnlyLink>
+              <Link to="/admin/home">
               <li>
-                <button className="--btn --btn-primary">Admin</button>
+                <button className='--btn --btn-primary'>Admin</button>
               </li>
+              </Link>
             </AdminOnlyLink>
             <li>
               <NavLink to="/" className={activeLink}>Home</NavLink>
@@ -119,14 +121,14 @@ const Header = () => {
               <ShowOnLogout>
                 <NavLink to="/login" className={activeLink}>Login</NavLink>
               </ShowOnLogout>
-              {/* <ShowOnLogin> */}
-              <a href="#home" style={{ color: "#ff7722" }}>
-                <FaUserCircle size={16} />&nbsp;
-                Hi,{displayName}
-              </a>
-              <NavLink to="/order-history" className={activeLink}>My orders</NavLink>
-              <NavLink to="/" onClick={logoutUser}>Logout</NavLink>
-              {/* </ShowOnLogin> */}
+              <ShowOnLogin>
+                <a href="#home" style={{ color: "#ff7722" }}>
+                  <FaUserCircle size={16} />&nbsp;
+                  Hi,{displayName}
+                </a>
+                <NavLink to="/order-history" className={activeLink}>My orders</NavLink>
+                <NavLink to="/" onClick={logoutUser}>Logout</NavLink>
+              </ShowOnLogin>
             </span>
             {cart}
           </div>

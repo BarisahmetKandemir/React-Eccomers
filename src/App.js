@@ -10,6 +10,7 @@ import Register from './pages/auth/Register'
 import {ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import Admin from './pages/admin/Admin'
+import AdminOnlyRoute from './components/adminOnlyRoute/AdminOnlyRoute'
 
 const App = () => {
   return (
@@ -25,7 +26,7 @@ const App = () => {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/reset" element={<Reset/>}/>
-        <Route path="/admin/*" element={<Admin/>}/>
+        <Route path="/admin/*" element={<AdminOnlyRoute><Admin/></AdminOnlyRoute>}/>
        </Routes> 
        <Footer/>
     </BrowserRouter>

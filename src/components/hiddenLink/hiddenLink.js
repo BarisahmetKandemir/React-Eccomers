@@ -4,7 +4,7 @@ import { selectIsLoggedIn } from "../../redux/slice/authSlice"
 
 export const ShowOnLogin = ({children}) => {
     const isLoggedIn = useSelector(selectIsLoggedIn)
-
+    console.log(isLoggedIn)
     if(isLoggedIn) {
         return children
     }
@@ -16,7 +16,7 @@ export const ShowOnLogin = ({children}) => {
 
 export const ShowOnLogout = ({children}) => {
     const isLoggedIn = useSelector(selectIsLoggedIn)
-
+    console.log(isLoggedIn)
     if(!isLoggedIn) {
         return children
     }
