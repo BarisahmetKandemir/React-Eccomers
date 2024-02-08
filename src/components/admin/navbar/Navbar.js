@@ -26,7 +26,7 @@ const Navbar = () => {
             <NavLink to="/admin/all-products" className={activeLink}>All Products</NavLink>
           </li>
           <li>
-            <NavLink to="/admin/add-product" className={activeLink}>Add Produtc</NavLink>
+            <NavLink to="/admin/add-product/ADD" className={activeLink}>Add Produtc</NavLink>
           </li>
           <li>
             <NavLink to="/admin/orders" className={activeLink}>Orders</NavLink>
