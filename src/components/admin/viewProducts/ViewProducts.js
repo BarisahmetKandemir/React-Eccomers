@@ -1,6 +1,6 @@
 //// admin panelindeki allproducts componenti
 import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {toast} from "react-toastify"
 import { db, storage } from '../../../firebase/config'
 import Loader from '../../loader/Loader'
@@ -9,46 +9,57 @@ import { Link } from 'react-router-dom'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import { deleteObject, ref } from 'firebase/storage'
 import Notiflix from 'notiflix'
-import { useDispatch } from 'react-redux'
-import { STORE_PRODUCTS } from '../../../redux/slice/productSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { STORE_PRODUCTS, selectProducts } from '../../../redux/slice/productSlice'
+import useFetchCollection from '../../../customHooks/useFetchCollection'
 
 const ViewProducts = () => {
 
-  const [products,setProducts] = React.useState([])
-  const [isLoading,setIsLoading] = React.useState([])
+  // const [products,setProducts] = React.useState([])
+  // const [isLoading,setIsLoading] = React.useState([])
+
+  const { data , isLoading } = useFetchCollection("products")
+
+  const products = useSelector(selectProducts)
 
   const dispatch = useDispatch();
 
-  React.useEffect(()=>{
-    getProducts()
-  },[])
+  // React.useEffect(()=>{
+  //   getProducts()
+  // },[])
 
-  const getProducts = () => {
-    setIsLoading(true)
-    try{
-      // belirli bir koleksiyonu almak için
-      const productRef = collection(db,"products")
-      // seçtiğimiz koleksiyonu sırala
-      const q = query(productRef , orderBy("createdAt","desc"))
-      // gerçek zamanlı dinleme
-      onSnapshot(q,(snapshot) => {
-        // console.log(snapshot)
-        // console.log(snapshot.docs[0].data)
-        const allProducts = snapshot.docs.map((doc)=>({
-          id:doc.id,
-          ...doc.data()
-        }))
-        // console.log(allProducts)
-        setIsLoading(false)
-        setProducts(allProducts)
-        dispatch(STORE_PRODUCTS({products:allProducts}))
-      })
-    }
-    catch(error){
-      setIsLoading(false)
-      toast.error(error.message)
-    }
-  }
+  // const getProducts = () => {
+  //   setIsLoading(true)
+  //   try{
+  //     // belirli bir koleksiyonu almak için
+  //     const productRef = collection(db,"products")
+  //     // seçtiğimiz koleksiyonu sırala
+  //     const q = query(productRef , orderBy("createdAt","desc"))
+  //     // gerçek zamanlı dinleme
+  //     onSnapshot(q,(snapshot) => {
+  //       // console.log(snapshot)
+  //       // console.log(snapshot.docs[0].data)
+  //       const allProducts = snapshot.docs.map((doc)=>({
+  //         id:doc.id,
+  //         ...doc.data()
+  //       }))
+  //       // console.log(allProducts)
+  //       setIsLoading(false)
+  //       setProducts(allProducts)
+  //       dispatch(STORE_PRODUCTS({products:allProducts}))
+  //     })
+  //   }
+  //   catch(error){
+  //     setIsLoading(false)
+  //     toast.error(error.message)
+  //   }
+  // }
+
+  useEffect(()=>{
+    dispatch(STORE_PRODUCTS({
+      products: data
+    }))
+  },[dispatch,data])
 
   const confirmDelete = (id,imageURL) => {
     Notiflix.Confirm.show(
