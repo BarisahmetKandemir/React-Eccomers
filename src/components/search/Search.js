@@ -7,7 +7,7 @@ const Search = ({value,onChange}) => {
   return (
     <div className={styles.search}>
       <BiSearch size={18} className={styles.icon}/>
-      <input type="text" placeholder="Search By Name" value={value} onChage={onChange}/>
+      <input type="text" placeholder="Search By Name" value={value} onChange={onChange}/>
     </div>
   )
 }
