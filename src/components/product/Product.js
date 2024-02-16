@@ -7,6 +7,7 @@ import useFetchCollection from '../../customHooks/useFetchCollection'
 import {useDispatch,useSelector} from "react-redux"
 import { STORE_PRODUCTS, selectProducts } from '../../redux/slice/productSlice'
 import spinnerImg from "../../assets/spinner.gif"
+import {GET_PRICE_RANGE} from "../../redux/slice/productSlice"
 
 const Product = () => {
 
@@ -16,6 +17,9 @@ const Product = () => {
 
   useEffect(()=>{
     dispatch(STORE_PRODUCTS({
+      products:data
+    }))
+    dispatch(GET_PRICE_RANGE({
       products:data
     }))
   },[dispatch,data])
