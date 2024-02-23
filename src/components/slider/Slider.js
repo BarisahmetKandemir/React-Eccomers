@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import "./Slider.scss"
 import {AiOutlineArrowRight,AiOutlineArrowLeft} from "react-icons/ai"
 import {sliderData} from "./slider-data"
+import { Link } from 'react-router-dom'
 
 const Slider = () => {
 
@@ -54,7 +55,7 @@ const Slider = () => {
                       <h2>{heading}</h2>
                       <p>{desc}</p>
                       <hr/>
-                      <a href="#product" className="--btn --btn-primary">Shop Now</a>
+                      <button href="#product" className="--btn --btn-primary">Shop Now</button>
                     </div>
                   </>
                 )

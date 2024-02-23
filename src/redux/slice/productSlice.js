@@ -7,6 +7,7 @@ const initialState = {
   maxPrice: null
 }
 
+
 const productSlice = createSlice({
   name: "product",
   initialState,

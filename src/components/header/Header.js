@@ -7,10 +7,11 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase/config"
 import { toast } from "react-toastify"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SET_ACTIVE_USER, REMOVE_ACTİVE_USER } from '../../redux/slice/authSlice';
 import { ShowOnLogin, ShowOnLogout } from '../hiddenLink/hiddenLink';
 import { AdminOnlyLink } from '../adminOnlyRoute/AdminOnlyRoute';
+import { CALCULATE_TOTAL_QUANTITY, selectCartItems, selectCartTotalQuantity } from '../../redux/slice/cartSlice';
 
 const Header = () => {
 
@@ -20,7 +21,15 @@ const Header = () => {
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const cartTotalQuantity = useSelector(selectCartTotalQuantity)
+
+  const cartItems = useSelector(selectCartItems)
+
+  useEffect(()=>{
+    dispatch(CALCULATE_TOTAL_QUANTITY())
+  },[dispatch,cartItems])
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -81,7 +90,7 @@ const Header = () => {
       <Link to="cart">
         Cart
         <FaShoppingCart size={20} />
-        <p>0</p>
+        <p>{cartTotalQuantity}</p>
       </Link>
     </span>
   )
