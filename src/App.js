@@ -15,6 +15,10 @@ import ProductDetails from './components/product/productDetails/ProductDetails'
 import Cart from './pages/cart/Cart'
 import CheckoutDetails from './pages/checkout/CheckoutDetails'
 import Checkout from './pages/checkout/Checkout'
+import CheckoutSuccess from './pages/checkout/CheckoutSuccess'
+import OrderHistory from './pages/orderHistory/OrderHistory'
+import OrderDetails from './pages/orderDetails/OrderDetails'
+import ReviewProducts from './components/reviewProducts/ReviewProducts'
 
 const App = () => {
   return (
@@ -33,6 +37,10 @@ const App = () => {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/checkout-details" element={<CheckoutDetails/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/checkout-success' element={<CheckoutSuccess/>}/>
+        <Route path='/order-history' element={<OrderHistory/>}/>
+        <Route path='/order-details/:id' element={<OrderDetails/>}/>
+        <Route path='/review-product/:id' element={<ReviewProducts/>}/>
        </Routes> 
        <Footer/>
     </BrowserRouter>
