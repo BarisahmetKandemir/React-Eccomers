@@ -35,7 +35,7 @@ const OrderHistory = () => {
         <p>Open an order to leave a <b>Product Reviewe</b></p>
         <br />
         <>
-          {isLoading && <Loader />}
+          {isLoading && <Loader/>}
           <div className={styles.table}>
             {filteredOreders.length === 0 ? (
               <p>No orders found</p>

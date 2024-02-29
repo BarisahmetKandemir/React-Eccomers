@@ -29,7 +29,7 @@ const OrderDetails = () => {
         ) : (
           <>
             <p><b>Order ID:</b>{order.id}</p>
-            <p><b>Order Amount:</b>${OrderHistory.orderAmount}</p>
+            <p><b>Order Amount:</b>${order.orderAmount}</p>
             <p><b>Order Status:</b>{order.orderStatus}</p>
             <br/>
             <table>

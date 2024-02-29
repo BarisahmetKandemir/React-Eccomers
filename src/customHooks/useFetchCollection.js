@@ -19,7 +19,7 @@ const useFetchCollection = (collectionName) => {
           id:doc.id,
           ...doc.data()
         }))
-        console.log(allData)
+        // console.log(allData)
         setData(allData)
         setIsLoading(false)
       })
